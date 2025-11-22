@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akhil Coffee Café</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fdf6f0;
+      color: #333;
+    }
+
+    header {
+      background: #6b4f3b;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      background: url("https://images.unsplash.com/photo-1498804103079-a6351b050096?w=1600&auto=format&fit=crop") no-repeat center/cover;
+      height: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+    }
+
+    .hero h2 {
+      font-size: 3em;
+      margin: 0;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .section h2 {
+      color: #6b4f3b;
+      margin-bottom: 20px;
+    }
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .menu-item {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      width: 200px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .menu-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    .menu-item h3 {
+      margin-top: 0;
+      color: #6b4f3b;
+    }
+
+    form input, form textarea {
+      width: 250px;
+      padding: 8px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    form button {
+      background: #6b4f3b;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background: #553826;
+    }
+
+    footer {
+      background: #6b4f3b;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Akhil Coffee Café</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h2>Fresh Brews, Cozy Vibes</h2>
+  </div>
+
+  <section class="section" id="about">
+    <h2>About Us</h2>
+    <p>Welcome to <strong>Akhil Coffee Café</strong> — your neighborhood spot for freshly brewed coffee, tasty bites, and warm conversations.</p>
+  </section>
+
+  <section class="section" id="menu">
+    <h2>Our Menu</h2>
+    <div class="menu">
+      <div class="menu-item">
+        <h3>Cappuccino</h3>
+        <p>Rich espresso with steamed milk</p>
+        <p><strong>₹120</strong></p>
+      </div>
+      <div class="menu-item">
+        <h3>Latte</h3>
+        <p>Creamy blend of milk & coffee</p>
+        <p><strong>₹140</strong></p>
+      </div>
+      <div class="menu-item">
+        <h3>Cold Brew</h3>
+        <p>Slow-steeped coffee, smooth taste</p>
+        <p><strong>₹160</strong></p>
+      </div>
+      <div class="menu-item">
+        <h3>Espresso</h3>
+        <p>Strong and bold single shot</p>
+        <p><strong>₹100</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <h2>Contact Us</h2>
+    <p><strong>Address:</strong> 123 Coffee Street, Your City</p>
+    <p><strong>Phone:</strong> +91 98765 43210</p>
+    <p><strong>Email:</strong> hello@akhilcafe.com</p>
+
+    <h3>Send Us Feedback</h3>
+    <form onsubmit="return validateForm()">
+      <input type="text" id="name" placeholder="Your Name"><br><br>
+      <input type="email" id="email" placeholder="Your Email"><br><br>
+      <textarea id="message" placeholder="Your Feedback"></textarea><br><br>
+      <button type="submit">Send Feedback</button>
+    </form>
+    <p id="msg" style="font-weight: bold;"></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Akhil Coffee Café. All Rights Reserved.</p>
+  </footer>
+
+<script>
+  // Greeting message based on time
+  const hour = new Date().getHours();
+  let greet = "";
+  if (hour < 12) greet = "Good Morning, Coffee Lover! ☕";
+  else if (hour < 18) greet = "Good Afternoon! Take a coffee break. 🌞";
+  else greet = "Good Evening! Time to unwind with a brew. 🌙";
+
+  document.querySelector('.hero h2').textContent = greet;
+
+  // Feedback form validation
+  function validateForm() {
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+
+    if (name === "" || email === "") {
+      document.getElementById("msg").textContent = "Please fill all fields!";
+      document.getElementById("msg").style.color = "red";
+      return false;// return false se agar value false rhegi to form submit nhi hoga 
+
+
+    }
+
+    document.getElementById("msg").textContent = "Thanks for your feedback!";
+    document.getElementById("msg").style.color = "green";
+    return false; // prevent page reload
+  }
+</script>
+</body>
+</html>
